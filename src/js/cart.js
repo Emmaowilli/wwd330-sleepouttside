@@ -2,7 +2,7 @@ import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utils.mjs"
 
 loadHeaderFooter();
 
-// ✅ Optional cart clear based on URL param
+// Optional cart clear based on URL param
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("cleared") === "true") {
   localStorage.removeItem("so-cart");
@@ -24,26 +24,23 @@ function renderCartContents() {
     return;
   }
 
-  // ✅ Render cart items
+  // Render cart items
   const htmlItems = cartItems.map(cartItemTemplate);
   cartSection.innerHTML = htmlItems.join("");
-
 
   // Add event listeners to remove buttons
   addRemoveButtonListeners();
 
-  // Total Calculation
-  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice * (item.quantity || 1), 0);
-
-  // ✅ Calculate total cost
-  const total = cartItems.reduce((sum, item) => {
+  // Calculate total cost (renamed to avoid conflict)
+  const totalCost = cartItems.reduce((sum, item) => {
     return sum + item.FinalPrice * (item.quantity || 1);
   }, 0);
 
-  totalElement && (totalElement.textContent = `Total: ₹${total.toFixed(2)}`);
+  // Update total display using totalCost
+  totalElement && (totalElement.textContent = `Total: ₹${totalCost.toFixed(2)}`);
   cartFooter?.classList.remove("hide");
 
-  // ✅ Update cart badge
+  // Update cart badge
   if (cartBadge) {
     const badgeCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
     cartBadge.textContent = badgeCount.toString();
@@ -88,9 +85,9 @@ function cartItemTemplate(item) {
     <p class="cart-card__color">${item.Colors && item.Colors.length > 0 ? item.Colors[0].ColorName : "Color not specified"}</p>
     <p class="cart-card__quantity">qty: ${quantity}</p>
     <p class="cart-card__price">₹${totalPrice}</p>
-    <button class="remove-item-btn" data-product-id="${item.Id}" title="Remove item from cart">✕</button>
+    <button class="remove-item-btn" data-product-id="${item.Id}" title="Remove item from cart">X</button>
   </li>`;
 }
 
-// ✅ Initialize cart rendering
+// Initialize cart rendering
 renderCartContents();

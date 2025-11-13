@@ -33,7 +33,10 @@ function renderCartContents() {
   addRemoveButtonListeners();
 
   // Total Calculation
-  const total = cartItems.reduce((sum, item) => sum + item.FinalPrice * (item.quantity || 1), 0);
+  const totalCost = cartItems.reduce((sum, item) => {
+  return sum + item.FinalPrice * (item.quantity || 1);
+}, 0);
+
 
   // ✅ Calculate total cost
   const total = cartItems.reduce((sum, item) => {

@@ -1,4 +1,8 @@
-import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  setLocalStorage,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -32,24 +36,26 @@ function renderCartContents() {
   addRemoveButtonListeners();
 
   // Calculate total cost (renamed to avoid conflict)
-  const totalCost = cartItems.reduce((sum, item) => {
-    return sum + item.FinalPrice * (item.quantity || 1);
-  }, 0);
+  const totalCost = cartItems.reduce((sum, item) => sum + item.FinalPrice * (item.quantity || 1), 0);
 
   // Update total display using totalCost
-  totalElement && (totalElement.textContent = `Total: ₹${totalCost.toFixed(2)}`);
+  totalElement &&
+    (totalElement.textContent = `Total: ₹${totalCost.toFixed(2)}`);
   cartFooter?.classList.remove("hide");
 
   // Update cart badge
   if (cartBadge) {
-    const badgeCount = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const badgeCount = cartItems.reduce(
+      (sum, item) => sum + (item.quantity || 1),
+      0,
+    );
     cartBadge.textContent = badgeCount.toString();
   }
 }
 
 function addRemoveButtonListeners() {
   const removeButtons = document.querySelectorAll(".remove-item-btn");
-  removeButtons.forEach(button => {
+  removeButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
       const productId = button.dataset.productId;
@@ -60,13 +66,13 @@ function addRemoveButtonListeners() {
 
 function removeFromCart(productId) {
   let cartItems = getLocalStorage("so-cart") || [];
-  
+
   // Remove the item with the matching ID
-  cartItems = cartItems.filter(item => item.Id !== productId);
-  
+  cartItems = cartItems.filter((item) => item.Id !== productId);
+
   // Update localStorage
   setLocalStorage("so-cart", cartItems);
-  
+
   // Re-render the cart
   renderCartContents();
 }
@@ -89,5 +95,17 @@ function cartItemTemplate(item) {
   </li>`;
 }
 
+// Add this function if it doesn't exist already
+function setupCartCount() {
+  const cartCount = document.querySelector(".cart-count");
+  if (cartCount) {
+    const cart = JSON.parse(localStorage.getItem("so-cart") || "[]");
+    cartCount.textContent = cart.length;
+    cartCount.style.display = cart.length > 0 ? "flex" : "none";
+  }
+}
+
+// This line MUST be present — it's what main.js is looking for
+export { setupCartCount };
 // Initialize cart rendering
 renderCartContents();

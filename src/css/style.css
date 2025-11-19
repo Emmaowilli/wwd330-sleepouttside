@@ -13,6 +13,33 @@
   --small-font: 0.8em;
   --large-font: 1.2em;
 }
+/* === Checkout Alert Styles (Final Clean Version) === */
+.alert {
+  padding: 12px 15px;
+  margin: 15px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 600;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.alert.error {
+  background: #ffdddd;
+  border: 1px solid #ff5c5c;
+  color: #a40000;
+}
+
+.alert.success {
+  background: #ddffdd;
+  border: 1px solid #4caf50;
+  color: #1b5e20;
+}
+
+.hidden {
+  display: none !important;
+}
 
 * {
   margin: 0;
@@ -164,7 +191,6 @@ button {
   gap: 1.5rem;
 }
 
-
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
@@ -272,7 +298,7 @@ button {
 }
 
 .discount-flag {
-  background-color: #e60023; 
+  background-color: #e60023;
   color: white;
   font-weight: bold;
   padding: 4px 8px;
@@ -298,7 +324,7 @@ button {
   justify-content: center;
   padding: 1.5rem 0;
   background-color: #f9f9f9;
-  width: 100%
+  width: 100%;
 }
 
 .logo-title {
@@ -326,7 +352,7 @@ button {
 
 .main-nav a {
   text-decoration: none;
-  color: #007ACC;
+  color: #007acc;
   margin: 0 0.5rem;
 }
 
@@ -420,7 +446,7 @@ mark {
   background: var(--card-bg);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-card--detail img {
@@ -433,7 +459,6 @@ mark {
 .product-listing {
   min-height: 600px; /* or whatever fits your layout */
 }
-
 
 .detail-info {
   flex: 1;
@@ -486,8 +511,10 @@ body {
   font-size: 1.4rem;
   padding: 0.5rem 0.8rem;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .theme-toggle:hover {
@@ -497,7 +524,9 @@ body {
 }
 
 body {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
@@ -544,7 +573,7 @@ body {
   font-size: 1.3rem;
   padding: 0.4rem 0.6rem;
   cursor: pointer;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   transition: background 0.3s ease;
 }
 
@@ -631,7 +660,6 @@ del {
   display: none;
 }
 
-
 .alert .close-btn {
   background: none;
   border: none;
@@ -639,7 +667,6 @@ del {
   color: #721c24;
   cursor: pointer;
 }
-
 
 @media screen and (min-width: 500px) {
   body {
@@ -662,3 +689,5 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+.search-container { padding: 1rem; text-align: center; }
+#searchInput { padding: 0.8rem; width: 80%; max-width: 400px; font-size: 1rem; border-radius: 8px; border: 1px solid #ccc; }

@@ -1,1 +1,0 @@
-import{l as e,g as r}from"./utils-BJU-VGx7.js";/* empty css              */import{E as i}from"./ExternalServices-BYvN3tU5.js";import{P as n}from"./ProductList-CwUvWNho.js";e();const t=r("category"),s=new i,o=document.querySelector(".product-list");t&&o?new n(t,s,o).init():console.warn("Category or product list element missing. Product listing not initialized.");

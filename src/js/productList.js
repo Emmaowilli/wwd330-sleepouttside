@@ -1,4 +1,4 @@
-import ProductList from "./ProductList.mjs";
+import ProductList from "./productList.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 
@@ -16,12 +16,17 @@ const discounts = {
   tent: 0.15,
   backpack: 0.1,
   hammock: 0.2,
-  "sleeping bag": 0.25
+  "sleeping bag": 0.25,
 };
 
 // Instantiate data source and product list renderer
 const dataSource = new ExternalServices();
-const productList = new ProductList(category, dataSource, productListElement, discounts);
+const productList = new ProductList(
+  category,
+  dataSource,
+  productListElement,
+  discounts,
+);
 
 // Initialize product list
 productList.init();

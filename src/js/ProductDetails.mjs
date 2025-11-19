@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
 
-export default class ProductDetails {
+export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};

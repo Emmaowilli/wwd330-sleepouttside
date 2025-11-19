@@ -1,1 +1,6 @@
-console.log("main.js is loaded for product_pages!");
+import { loadHeaderFooter } from "./src/js/utils.mjs";
+import { setupCartCount } from "./src/js/cart.js";
+
+loadHeaderFooter();
+setupCartCount();
+

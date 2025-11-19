@@ -17,15 +17,17 @@ async function renderProductDetails() {
     const product = await dataSource.findProductById(productId);
 
     if (!product) {
-      document.querySelector(".product-detail").innerHTML = "<p>Product not found.</p>";
+      document.querySelector(".product-detail").innerHTML =
+        "<p>Product not found.</p>";
       return;
     }
 
     // Use modular UI renderer
     renderProductDetailsUI(product);
   } catch (error) {
-    console.error("Error fetching product details:", error);
-    document.querySelector(".product-detail").innerHTML = "<p>Error loading product.</p>";
+
+    document.querySelector(".product-detail").innerHTML =
+      "<p>Error loading product.</p>";
   }
 }
 

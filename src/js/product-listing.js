@@ -14,5 +14,8 @@ if (category && element) {
   const listing = new ProductList(category, dataSource, element);
   listing.init();
 } else {
-  console.warn("Category or product list element missing. Product listing not initialized.");
+  const productListContainer = document.querySelector(".product-list");
+  if (productListContainer) {
+    productListContainer.innerHTML = "<p>No category selected or product list missing.</p>";
+  }
 }
